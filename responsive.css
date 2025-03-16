@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Lobster&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  margin: 0%;
+  padding: 0%;
+  background: url("/images/background.svg");
+  overflow: auto;
+}
+.new-heading {
+color: black;
+text-align: center;
+font-size: larger;
+font-weight: 700;
+margin: 1%;
+}
+
+p#animated-text {
+  color: white;
+}
+
+.sec-1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.sec-1 .container-fluid {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  padding: 1rem;
+}
+
+.sec-1 p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.sec-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.sec-1::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  z-index: 2;
+}
+
+.sec-1 div {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sec-1 h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .sec-1 h1 {
+      font-size: 2.5rem;
+  }
+  .sec-1 p {
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sec-1 h1 {
+      font-size: 2rem;
+  }
+  .sec-1 p {
+      font-size: 0.9rem;
+  }
+}
+/* Main Continents List */
+.continents-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.continents-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px auto;
+  max-width: 100%;
+  gap: 25px;
+}
+
+.continents-list li {
+  font-size:larger;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 6px 10
+  px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.grid-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Underline animation */
+.continents-list li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #4caf50;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.continents-list li:hover::after,
+.continents-list li:active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.all-national-parks {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.country-section {
+  display: none; /* Hide by default */
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+  .continents-list {
+      gap: 10px;
+  }
+
+  .continents-list li {
+      font-size: 1rem;
+      padding: 6px 10px;
+  }
+}
+
+
+.country-section {
+  text-align: center;
+  margin-top: 20px;
+}
+/* Grid Container */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 20px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px; /* Apply border radius to the grid item */
+  height: 300px; /* Set a fixed height for all grid items */
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  border-radius: 25px; /* Apply border radius to the image */
+}
+
+.grid-item p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem; /* Increase font size */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+}
+
+.grid-item p strong {
+  font-size: 1.5rem; /* Increase font size for the park name */
+  margin-bottom: 10px; /* Add margin below the park name */
+}
+
+.grid-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  /* Apply border radius to the overlay */
+}
+
+.grid-item:hover img {
+  transform: scale(1.1);
+  filter: blur(2px); /* Apply blur effect on hover */
+  opacity: 0.7; /* Add opacity to the image on hover */
+}
+
+.grid-item:hover p,
+.grid-item:hover::before {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .grid-container {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+  }
+  .grid-item {
+      height: 250px; /* Reduce height further */
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-item {
+      height: 220px; /* Adjust height for mobile */
+  }
+  .grid-item p {
+      font-size: 0.85rem;
+      padding: 6px;
+      width: 95%;
+  }
+}
+-->
